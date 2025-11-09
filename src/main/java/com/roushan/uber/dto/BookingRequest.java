@@ -1,6 +1,8 @@
 package com.roushan.uber.dto;
 
-import com.roushan.uber.enums.BookingStatus;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,19 +15,20 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class BookingRequest {
-
-    private Long id;
+    @NotNull(message = "Passenger Id is required")
     private Long passengerId;
-    private String passengerName;
+
     private Long driverId;
-    private String driverName;
+
+    @NotBlank(message = "Pick up location is required")
     private String pickUpLocation;
+
+    @NotBlank(message = "Drop off location is required")
     private String dropOffLocation;
-    private BookingStatus status;
+
+    @NotNull(message = "Fare is required")
+    @Positive(message = "Fare must be positive")
     private BigDecimal fare;
-    private LocalDateTime createAt;
-    private LocalDateTime updateAt;
+
     private LocalDateTime scheduledPickUpTime;
-    private LocalDateTime actualPickUpTime;
-    private LocalDateTime completedAt;
 }
