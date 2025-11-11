@@ -2,8 +2,8 @@ package com.roushan.uber.services;
 
 public interface WriteService<T, S, ID> {
 
-    T create(S entity);
-    T update(ID id,S entity);
+    T create(S request);
+    T update(ID id,S request);
     void deleteById(ID id);
 
 

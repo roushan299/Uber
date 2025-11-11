@@ -3,12 +3,13 @@ package com.roushan.uber.repository;
 import com.roushan.uber.entity.Booking;
 import com.roushan.uber.entity.Driver;
 import com.roushan.uber.entity.Passenger;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface BookingRepository {
+public interface BookingRepository extends JpaRepository<Booking, Long> {
 
     List<Booking> findByPassenger(Passenger passenger);
     List<Booking> findByDriver(Driver driver);
